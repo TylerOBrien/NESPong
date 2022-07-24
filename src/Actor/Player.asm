@@ -30,8 +30,10 @@ player_y_dir: .res 1
     sta player_x_dir
     sta player_y_dir
 
-    lda #16
+    lda #SCREEN_X_MIN
     sta player_x
+
+    lda #SCREEN_Y_MIN
     sta player_y
 
     ; --- Tile

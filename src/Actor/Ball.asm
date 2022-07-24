@@ -15,6 +15,8 @@ ball_x_dir: .res 1
 ball_y:     .res 1
 ball_y_dir: .res 1
 
+.importzp player_x, player_y
+
 ; ------------------
 ; Code
 ; ------------------

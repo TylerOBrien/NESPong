@@ -10,15 +10,15 @@
 
 .segment "ZEROPAGE"
 
-player_x:     .res 1
-player_x_max: .res 1
-player_y:     .res 1
-player_y_max: .res 1
-player_y_dir: .res 1
+player_1_x:     .res 1
+player_1_x_max: .res 1
+player_1_y:     .res 1
+player_1_y_max: .res 1
+player_1_y_dir: .res 1
 
 .importzp controller_state
 
-.exportzp player_x, player_x_max, player_y, player_y_max
+.exportzp player_1_x, player_1_x_max, player_1_y, player_1_y_max
 
 ; ------------------
 ; Code
@@ -26,24 +26,24 @@ player_y_dir: .res 1
 
 .segment "CODE"
 
-.export player_init
-.proc player_init
+.export player_1_init
+.proc player_1_init
     lda #0
-    sta player_y_dir
+    sta player_1_y_dir
 
     lda #SCREEN_X_MIN
-    sta player_x
+    sta player_1_x
 
     clc
     adc #16
-    sta player_x_max
+    sta player_1_x_max
 
     lda #SCREEN_Y_MIN
-    sta player_y
+    sta player_1_y
 
     clc
     adc #32
-    sta player_y_max
+    sta player_1_y_max
 
     ; --- Tile
     lda #$02
@@ -61,8 +61,8 @@ player_y_dir: .res 1
     rts
 .endproc
 
-.export player_draw
-.proc player_draw
+.export player_1_draw
+.proc player_1_draw
     ; --- Palette
     lda #$01
     sta SPRITE_0_ATTR
@@ -74,7 +74,7 @@ player_y_dir: .res 1
 
     ; --- Location
     left_x:
-        lda player_x
+        lda player_1_x
         sta SPRITE_0_X
         sta SPRITE_2_X
         sta SPRITE_4_X
@@ -87,7 +87,7 @@ player_y_dir: .res 1
         sta SPRITE_5_X
 
     top_y:
-        lda player_y
+        lda player_1_y
         sta SPRITE_0_Y
         sta SPRITE_1_Y
 
@@ -107,8 +107,8 @@ player_y_dir: .res 1
     rts
 .endproc
 
-.export player_update
-.proc player_update
+.export player_1_update
+.proc player_1_update
     check_up:
         lda controller_state
         and #DPAD_UP
@@ -123,15 +123,15 @@ player_y_dir: .res 1
         ldx #1
 
     move:
-        stx player_y_dir
-        lda player_y
+        stx player_1_y_dir
+        lda player_1_y
         clc
-        adc player_y_dir
-        sta player_y
-        lda player_y_max
+        adc player_1_y_dir
+        sta player_1_y
+        lda player_1_y_max
         clc
-        adc player_y_dir
-        sta player_y_max
+        adc player_1_y_dir
+        sta player_1_y_max
 
     exit:
         rts

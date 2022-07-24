@@ -18,8 +18,10 @@ ball_y_dir: .res 1
 ball_is_between_left_paddle:  .res 1
 ball_is_between_right_paddle: .res 1
 
-.importzp player_x,   player_xmax,   player_y,   player_ymax
-.importzp computer_x, computer_xmax, computer_y, computer_ymax
+.export ball_x, ball_y
+
+.importzp player_1_x, player_1_xmax, player_1_y, player_1_ymax
+.importzp player_2_x, player_2_xmax, player_2_y, player_2_ymax
 
 ; ------------------
 ; Code
@@ -76,7 +78,7 @@ ball_is_between_right_paddle: .res 1
 ; ball_handle_left
 ;
 .proc ball_handle_left
-    lda player_x                ; Load x-pos of left-side of player
+    lda player_1_x              ; Load x-pos of left-side of player
     clc
     adc #16                     ; Add 16 pixels to move to right-side of player
     cmp ball_x                  ; Compare to left-side of ball
@@ -110,7 +112,7 @@ ball_is_between_right_paddle: .res 1
     lda ball_x                  ; Load x-pos of left-side of ball
     clc
     adc #8                      ; Add 8 pixels to move to right-side of ball
-    cmp computer_x              ; Compare to left-side of player2
+    cmp player_2_x              ; Compare to left-side of player2
     bne check_hit_right_screen  ; Did not hit player2's x-axis so check if ball hit the wall
 
     check_should_bounce_off_right_player:   ; Hit right player X-axis
@@ -213,7 +215,7 @@ ball_is_between_right_paddle: .res 1
     lda ball_y
     clc
     adc #8
-    cmp player_y
+    cmp player_1_y
     bcs bottom_ball_below_top_player ; Is bottom ball below or equal top player
 
     not_between:
@@ -222,7 +224,7 @@ ball_is_between_right_paddle: .res 1
         rts
 
     bottom_ball_below_top_player:
-        lda player_y
+        lda player_1_y
         clc
         adc #24
         cmp ball_y
@@ -242,7 +244,7 @@ ball_is_between_right_paddle: .res 1
     lda ball_y
     clc
     adc #8
-    cmp computer_y
+    cmp player_2_y
     bcs bottom_ball_below_top_computer ; Is bottom ball below or equal top computer
 
     not_between:
@@ -251,14 +253,14 @@ ball_is_between_right_paddle: .res 1
         rts
 
     bottom_ball_below_top_computer:
-        lda computer_y
+        lda player_2_y
         clc
         adc #24
         cmp ball_y
-        bcs bottom_computer_below_top_ball ; Is bottom computer below or equal top ball
+        bcs bottom_player_2_below_top_ball ; Is bottom computer below or equal top ball
         jmp not_between
 
-    bottom_computer_below_top_ball:
+    bottom_player_2_below_top_ball:
         lda #1
         sta ball_is_between_right_paddle
         rts

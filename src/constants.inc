@@ -1,3 +1,18 @@
+; --------------------
+; Game
+; --------------------
+
+GAME_STATE_TITLE   = %00000001
+GAME_STATE_OPTIONS = %00000010
+GAME_STATE_PAUSE   = %00000100
+GAME_STATE_PLAY    = %00001000
+GAME_STATE_WIN     = %00010000
+GAME_STATE_LOSE    = %00100000
+
+; --------------------
+;
+; --------------------
+
 SCREEN_X_MIN = 16
 SCREEN_X_MAX = 239
 SCREEN_Y_MIN = 24

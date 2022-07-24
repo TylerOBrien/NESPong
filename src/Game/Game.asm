@@ -22,7 +22,7 @@ game_mode: .res 1
 
 .export game_init
 .proc game_init
-    lda #1
+    lda #GAME_STATE_TITLE
     sta game_mode
     rts
 .endproc

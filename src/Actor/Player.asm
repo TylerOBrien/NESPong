@@ -11,8 +11,10 @@
 .segment "ZEROPAGE"
 
 player_x:     .res 1
+player_x_max: .res 1
 player_x_dir: .res 1
 player_y:     .res 1
+player_y_max: .res 1
 player_y_dir: .res 1
 
 .importzp controller_state
@@ -34,8 +36,16 @@ player_y_dir: .res 1
     lda #SCREEN_X_MIN
     sta player_x
 
+    clc
+    adc #16
+    sta player_x_max
+
     lda #SCREEN_Y_MIN
     sta player_y
+
+    clc
+    adc #32
+    sta player_y_max
 
     ; --- Tile
     lda #$02

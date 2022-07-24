@@ -1,4 +1,4 @@
-NAME = FooQuest
+NAME = NESPong
 OUTPUT = dist/$(NAME).nes
 
 CHRS = $(patsubst %,resources/graphics/%,\

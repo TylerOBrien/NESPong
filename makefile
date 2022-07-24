@@ -10,6 +10,7 @@ Actor/Ball.o\
 Actor/Computer.o\
 Actor/Player1.o\
 Actor/Player2.o\
+Game/Game.o\
 Input/Controllers.o\
 System/CPU.o\
 System/iNES.o\
@@ -30,6 +31,7 @@ build/%.o: src/%.asm src/constants.inc
 
 prepare:
 	@mkdir -p build/Actor
+	@mkdir -p build/Game
 	@mkdir -p build/Input
 	@mkdir -p build/System
 	@mkdir -p build/Vectors

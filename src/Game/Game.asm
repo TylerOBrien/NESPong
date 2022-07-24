@@ -25,6 +25,11 @@ game_state: .res 1
 .export game_update
 .proc game_update
     jsr world_update
+    rts
+.endproc
+
+.export game_draw
+.proc game_draw
     jsr world_draw
     rts
 .endproc

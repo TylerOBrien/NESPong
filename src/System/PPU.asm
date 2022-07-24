@@ -22,6 +22,9 @@
 
 .export ppu_start
 .proc ppu_start
+    vblank_wait:
+        bit PPU_STATUS
+        bpl vblank_wait
     lda #%10010000  ; turn on NMIs, sprites use first pattern table
     sta PPU_CTRL
     lda #%00011110  ; turn on screen

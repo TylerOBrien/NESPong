@@ -38,7 +38,7 @@ player_1_y_dir: .res 1
     adc #16
     sta player_1_x_max
 
-    lda #SCREEN_Y_MIN
+    lda #48
     sta player_1_y
 
     clc
@@ -63,6 +63,13 @@ player_1_y_dir: .res 1
 
 .export player_1_draw
 .proc player_1_draw
+    php
+    pha
+    txa
+    pha
+    tya
+    pha
+
     ; --- Palette
     lda #$01
     sta SPRITE_0_ATTR
@@ -104,7 +111,14 @@ player_1_y_dir: .res 1
         sta SPRITE_5_Y
 
     ; -- Exit
-    rts
+    exit:
+        pla
+        tay
+        pla
+        tax
+        pla
+        plp
+        rts
 .endproc
 
 .export player_1_update

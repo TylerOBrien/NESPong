@@ -10,7 +10,9 @@
 
 .segment "ZEROPAGE"
 
-.importzp controller_state, ball_y, player_2_y
+.importzp controller_state
+.importzp ball_y
+.importzp player_2_y
 
 ; ------------------
 ; Code
@@ -25,6 +27,13 @@
 
 .export computer_update
 .proc computer_update
+    php
+    pha
+    txa
+    pha
+    tya
+    pha
+
     lda player_2_y
     clc
     adc #12
@@ -40,5 +49,11 @@
 
     exit:
         sta controller_state+1
+        pla
+        tay
+        pla
+        tax
+        pla
+        plp
         rts
 .endproc

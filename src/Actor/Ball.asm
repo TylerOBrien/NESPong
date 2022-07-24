@@ -18,7 +18,7 @@ ball_y_dir: .res 1
 ball_is_between_left_paddle:  .res 1
 ball_is_between_right_paddle: .res 1
 
-.export ball_x, ball_y
+.exportzp ball_x, ball_y
 
 .importzp player_1_x, player_1_xmax, player_1_y, player_1_ymax
 .importzp player_2_x, player_2_xmax, player_2_y, player_2_ymax
@@ -64,6 +64,13 @@ ball_is_between_right_paddle: .res 1
 ;
 .export ball_draw
 .proc ball_draw
+    php
+    pha
+    txa
+    pha
+    tya
+    pha
+
     ; --- Location
     lda ball_x
     sta SPRITE_12_X
@@ -71,6 +78,12 @@ ball_is_between_right_paddle: .res 1
     sta SPRITE_12_Y
 
     ; -- Exit
+    pla
+    tay
+    pla
+    tax
+    pla
+    plp
     rts
 .endproc
 
@@ -306,10 +319,12 @@ ball_is_between_right_paddle: .res 1
         clc
         adc ball_x_dir
         sta ball_x
+        lda #0
         ; --- Y Position
         lda ball_y
         clc
         adc ball_y_dir
         sta ball_y
+        lda #0
         rts
 .endproc

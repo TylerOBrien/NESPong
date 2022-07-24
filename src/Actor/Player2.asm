@@ -73,6 +73,13 @@ player_2_y_dir: .res 1
 
 .export player_2_draw
 .proc player_2_draw
+    php
+    pha
+    txa
+    pha
+    tya
+    pha
+
     ; --- Location
     left_x:
         lda player_2_x
@@ -105,7 +112,14 @@ player_2_y_dir: .res 1
         sta SPRITE_11_Y
 
     ; -- Exit
-    rts
+    exit:
+        pla
+        tay
+        pla
+        tax
+        pla
+        plp
+        rts
 .endproc
 
 .export player_2_update

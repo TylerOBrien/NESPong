@@ -130,6 +130,10 @@ player_y_dir: .res 1
         clc
         adc player_y_dir
         sta player_y
+        lda player_ymax
+        clc
+        adc player_y_dir
+        sta player_ymax
 
     exit:
         rts

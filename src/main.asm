@@ -10,7 +10,7 @@
 
 .segment "CODE"
 
-.import map_load_play_nametable
+.import map_init, map_load_play_nametable
 .import controller_update
 .import world_init
 .import ppu_init, ppu_start, ppu_vblank_wait
@@ -27,6 +27,7 @@
         cpx #$20
         bne load_palettes
 
+    jsr map_init
     jsr map_load_play_nametable
 
 	LDA PPUSTATUS

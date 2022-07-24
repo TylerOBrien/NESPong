@@ -16,6 +16,7 @@ player_y:     .res 1
 player_y_dir: .res 1
 
 .importzp controller_state
+.exportzp player_x, player_y
 
 ; ------------------
 ; Code

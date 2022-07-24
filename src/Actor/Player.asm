@@ -19,7 +19,7 @@ player_y_dir: .res 1
 
 .importzp controller_state
 
-.exportzp player_x, player_x_max, player_y, player_ymax
+.exportzp player_x, player_x_max, player_y, player_y_max
 
 ; ------------------
 ; Code
@@ -130,10 +130,10 @@ player_y_dir: .res 1
         clc
         adc player_y_dir
         sta player_y
-        lda player_ymax
+        lda player_y_max
         clc
         adc player_y_dir
-        sta player_ymax
+        sta player_y_max
 
     exit:
         rts

@@ -12,7 +12,6 @@
 
 player_x:     .res 1
 player_x_max: .res 1
-player_x_dir: .res 1
 player_y:     .res 1
 player_y_max: .res 1
 player_y_dir: .res 1
@@ -30,7 +29,6 @@ player_y_dir: .res 1
 .export player_init
 .proc player_init
     lda #0
-    sta player_x_dir
     sta player_y_dir
 
     lda #SCREEN_X_MIN

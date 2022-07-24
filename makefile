@@ -7,6 +7,7 @@ pong.chr)
 OBJ = $(patsubst %,build/%,\
 main.o\
 Actor/Ball.o\
+Actor/Computer.o\
 Actor/Player.o\
 Input/Controllers.o\
 System/CPU.o\

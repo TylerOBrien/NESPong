@@ -10,16 +10,14 @@
 
 .segment "CODE"
 
-.import ball_init
-.import player_init
 .import controller_update
+.import world_init
 .import ppu_init, ppu_start, ppu_vblank_wait
 
 .export main
 .proc main
     jsr ppu_init
-    jsr ball_init
-    jsr player_init
+    jsr world_init
 
     load_palettes:
         lda palettes,X

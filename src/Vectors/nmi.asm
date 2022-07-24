@@ -10,7 +10,7 @@
 
 .segment "CODE"
 
-.import world_draw, world_update
+.import game_update
 
 .export nmi_handler
 .proc nmi_handler
@@ -20,8 +20,7 @@
     sta OAM_DMA
     lda #$00
 
-    jsr world_update
-    jsr world_draw
+    jsr game_update
 
     sta $2005
 	sta $2005

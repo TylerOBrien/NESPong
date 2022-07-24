@@ -15,9 +15,6 @@ ball_x_dir: .res 1
 ball_y:     .res 1
 ball_y_dir: .res 1
 
-BALL_BOUNDS_Y_MIN = 8
-BALL_BOUNDS_Y_MAX = 223
-
 ; ------------------
 ; Code
 ; ------------------
@@ -67,14 +64,14 @@ BALL_BOUNDS_Y_MAX = 223
     ; --- Moving Left
     check_left:
         lda ball_x
-        cmp #0
+        cmp #SCREEN_X_MIN
         beq bounce_off_left_wall
         jmp check_y
 
     ; --- Moving Right
     check_right:
         lda ball_x
-        cmp #247
+        cmp #SCREEN_X_MAX
         beq bounce_off_right_wall
         jmp check_y
 
@@ -96,14 +93,14 @@ BALL_BOUNDS_Y_MAX = 223
     ; --- Moving Down
     check_down:
         lda ball_y
-        cmp #BALL_BOUNDS_Y_MAX
+        cmp #SCREEN_Y_MAX
         beq bounce_off_bottom_wall
         jmp move
 
     ; --- Moving Up
     check_up:
         lda ball_y
-        cmp #BALL_BOUNDS_Y_MIN
+        cmp #SCREEN_Y_MIN
         beq bounce_off_top_wall
         jmp move
 

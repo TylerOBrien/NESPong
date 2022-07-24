@@ -10,6 +10,7 @@
 
 .segment "CODE"
 
+.import map_load_play_nametable
 .import controller_update
 .import world_init
 .import ppu_init, ppu_start, ppu_vblank_wait
@@ -26,7 +27,24 @@
         cpx #$20
         bne load_palettes
 
-    jsr ppu_vblank_wait
+    jsr map_load_play_nametable
+
+	LDA PPUSTATUS
+	LDA #$23
+	STA PPUADDR
+	LDA #$c2
+	STA PPUADDR
+	LDA #%01000000
+	STA PPUDATA
+
+	LDA PPUSTATUS
+	LDA #$23
+	STA PPUADDR
+	LDA #$e0
+	STA PPUADDR
+	LDA #%00001100
+	STA PPUDATA
+
     jsr ppu_start
 
     forever:
@@ -40,18 +58,19 @@
 
 .segment "RODATA"
 palettes:
-.byte $0f, $12, $23, $27
-.byte $0f, $2b, $3c, $39
-.byte $0f, $0c, $07, $13
-.byte $0f, $19, $09, $29
-.byte $0f, $2d, $10, $15
-.byte $0f, $19, $09, $29
-.byte $0f, $19, $09, $29
-.byte $0f, $19, $09, $29
+    .byte $2c, $12, $23, $27
+    .byte $2c, $2b, $3c, $39
+    .byte $2c, $0c, $07, $13
+    .byte $2c, $19, $09, $29
+
+    .byte $2c, $2d, $10, $15
+    .byte $2c, $19, $09, $29
+    .byte $2c, $19, $09, $29
+    .byte $2c, $19, $09, $29
 
 ; ------------------
 ; CHRs
 ; ------------------
 
 .segment "CHR"
-.incbin "resources/graphics/pong.chr"
+    .incbin "resources/graphics/pong.chr"

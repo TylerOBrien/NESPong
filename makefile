@@ -12,6 +12,7 @@ Actor/Player1.o\
 Actor/Player2.o\
 Game/Game.o\
 Input/Controllers.o\
+Map/Map.o\
 System/CPU.o\
 System/iNES.o\
 System/PPU.o\
@@ -33,6 +34,7 @@ prepare:
 	@mkdir -p build/Actor
 	@mkdir -p build/Game
 	@mkdir -p build/Input
+	@mkdir -p build/Map
 	@mkdir -p build/System
 	@mkdir -p build/Vectors
 	@mkdir -p build/World

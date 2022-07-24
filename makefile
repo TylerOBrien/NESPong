@@ -17,14 +17,14 @@ Vectors/nmi.o\
 Vectors/reset.o\
 World/World.o)
 
-all: config/nes.cfg $(OBJ)
-	ld65 -o $(OUTPUT) -C $^
+all: $(OBJ)
+	ld65 -o $(OUTPUT) -C config/nes.cfg $^
 
 build/main.o: prepare src/main.asm $(CHRS)
 	ca65 -o build/main.o src/main.asm
 
-build/%.o: src/%.asm
-	ca65 -o $@ $?
+build/%.o: src/%.asm src/constants.inc
+	ca65 -o $@ $<
 
 prepare:
 	@mkdir -p build/Actor

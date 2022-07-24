@@ -58,11 +58,7 @@ player_2_y_dir: .res 1
     sta SPRITE_10_TILE ; bottom-left of paddle
     lda #$23
     sta SPRITE_11_TILE ; bottom-right of paddle
-    rts
-.endproc
 
-.export player_2_draw
-.proc player_2_draw
     ; --- Palette
     lda #$01
     sta SPRITE_6_ATTR
@@ -72,6 +68,11 @@ player_2_y_dir: .res 1
     sta SPRITE_10_ATTR
     sta SPRITE_11_ATTR
 
+    rts
+.endproc
+
+.export player_2_draw
+.proc player_2_draw
     ; --- Location
     left_x:
         lda player_2_x

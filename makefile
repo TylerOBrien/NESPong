@@ -8,7 +8,8 @@ OBJ = $(patsubst %,build/%,\
 main.o\
 Actor/Ball.o\
 Actor/Computer.o\
-Actor/Player.o\
+Actor/Player1.o\
+Actor/Player2.o\
 Input/Controllers.o\
 System/CPU.o\
 System/iNES.o\

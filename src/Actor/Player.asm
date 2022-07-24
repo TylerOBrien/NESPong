@@ -33,11 +33,7 @@ player_y_dir: .res 1
     lda #16
     sta player_x
     sta player_y
-    rts
-.endproc
 
-.export player_draw
-.proc player_draw
     ; --- Tile
     lda #$02
     sta SPRITE_0_TILE ; top-left of paddle
@@ -51,7 +47,11 @@ player_y_dir: .res 1
     sta SPRITE_4_TILE ; bottom-left of paddle
     lda #$23
     sta SPRITE_5_TILE ; bottom-right of paddle
+    rts
+.endproc
 
+.export player_draw
+.proc player_draw
     ; --- Palette
     lda #$01
     sta SPRITE_0_ATTR

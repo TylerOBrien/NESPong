@@ -10,9 +10,9 @@
 
 .segment "ZEROPAGE"
 
-game_mode: .res 1
+game_state: .res 1
 
-.exportzp game_mode
+.exportzp game_state
 
 ; ------------------
 ; Code
@@ -23,6 +23,6 @@ game_mode: .res 1
 .export game_init
 .proc game_init
     lda #GAME_STATE_TITLE
-    sta game_mode
+    sta game_state
     rts
 .endproc

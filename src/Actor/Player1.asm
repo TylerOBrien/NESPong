@@ -32,6 +32,8 @@ player_1_y_dir: .res 1
     sta player_1_y_dir
 
     lda #SCREEN_X_MIN
+    clc
+    adc #8
     sta player_1_x
 
     clc

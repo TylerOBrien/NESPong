@@ -19,7 +19,7 @@ player_y_dir: .res 1
 
 .importzp controller_state
 
-.exportzp player_x, player_y
+.exportzp player_x, player_x_max, player_y, player_ymax
 
 ; ------------------
 ; Code
